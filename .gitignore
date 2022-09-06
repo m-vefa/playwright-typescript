@@ -5,4 +5,4 @@ node_modules/
 .github/
 .DS_Store
 package-lock.json
-configuration/testConfig.ts
+configuration/
