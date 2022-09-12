@@ -3,7 +3,7 @@ import test from "../lib/BaseTest";
 
 
 
-test(`Verify that the user is able to login by entering valid credentials`, async ({ loginPage,portfolioPage ,header}) => {
+test(`Verify that the user is able to filter realties by price range`, async ({ loginPage,portfolioPage ,header}) => {
 
     await loginPage.loginToHepsiemlak();
 

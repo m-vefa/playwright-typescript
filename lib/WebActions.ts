@@ -21,6 +21,11 @@ export class WebActions {
     async getCurrentUrl():Promise<string>  {
         return this.page.url()
     }
+    async selectOptionFromDropdown(locator: string, option: string): Promise<void> {
+
+        await this.page.locator(locator).selectOption(option);
+
+    }
     
     async verifyElementText(locator: string, text: string): Promise<void> {
         const textValue = await this.page.textContent(locator);
