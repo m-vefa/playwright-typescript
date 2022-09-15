@@ -15,7 +15,7 @@ export class Header {
 
     async navigationBar(navbar: string) {
 
-        await webActions.clickElement(`//li/a[./span[normalize-space()='${navbar}']]`);
+        await webActions.clickElement(`a:has-text('${navbar}')`);
     }
 
 
