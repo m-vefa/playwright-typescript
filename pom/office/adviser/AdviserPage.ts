@@ -17,14 +17,17 @@ export class AdviserPage extends AdviserElements {
 
         await this.advisersInOffice();
         await this.clickOnAddAdviser();
+        await this.enterFirstName('vefa');
+        await this.enterLastName('vefa');
+        await this.enterEmail('vefa@yopmail.com');
+        await this.selectDate('12', '12', '1994');
+        await this.enterPassword('ve123456');
+        await this.enterConfirmPassword('ve123456');
+        await this.enterPhoneNumber('5525218682');
+        await this.selectRole('27');
+        await this.selectMission('190001');
+        await webActions.clickElement(AdviserElements.SAVE_BUTTON_IN_MODAL);
 
-        await this.enterFirstName('vefa')
-        await this.enterLastName('vefa')
-        await this.enterEmail('vefa@yopmail.com')
-        await this.selectDate('12','12','1994')
-        await this.enterPassword('vefa123456')
-        await this.enterConfirmPassword('vefa123456')
-       
 
     }
 
@@ -56,12 +59,23 @@ export class AdviserPage extends AdviserElements {
         await webActions.enterElementText(await this.getInputInModal('email'), email);
     }
 
-    private async selectDate(day: string,month: string,year: string) {
+    private async selectDate(day: string, month: string, year: string) {
 
 
-      await webActions.selectOptionFromDropdown(`select[id ='days']`,day )
-      await webActions.selectOptionFromDropdown(`select[id ='month']`, month)
-      await webActions.selectOptionFromDropdown(`select[id ='year']`,year)
+        await webActions.selectOptionFromDropdown(`select[id ='days']`, day)
+        await webActions.selectOptionFromDropdown(`select[id ='month']`, month)
+        await webActions.selectOptionFromDropdown(`select[id ='year']`, year)
+
+    }
+
+    private async enterPhoneNumber(phone: string) {
+
+        const phoneNumber = [phone.slice(0, 3), phone.slice(3)];
+
+        await webActions.enterElementText(await this.getInputInModal('phoneAreaCode'), phoneNumber[0]);
+
+        await webActions.enterElementText(await this.getInputInModal('phoneNumber'), phoneNumber[1]);
+
 
     }
 
@@ -73,6 +87,19 @@ export class AdviserPage extends AdviserElements {
 
     private async enterConfirmPassword(confirmedPassword: string) {
         await webActions.enterElementText(await this.getInputInModal('password-confirm'), confirmedPassword);
+    }
+
+
+
+
+    private async selectRole(role: string) {
+        await webActions.selectOptionFromDropdown(`//select[@id ='roleId']`, role);
+
+    }
+
+
+    private async selectMission(mission: string) {
+        await webActions.selectOptionFromDropdown(`//select[@id ='missionId']`, mission);
     }
 }
 
