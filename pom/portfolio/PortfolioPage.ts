@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { testConfig } from "../../configuration/testConfig";
+import { testConfig } from "../../config/testConfig";
 import { WebActions } from '../../lib/WebActions';
 import { PortfolioElements } from './PortfolioElements';
 
