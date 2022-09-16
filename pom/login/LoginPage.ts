@@ -42,6 +42,22 @@ export class LoginPage extends LoginElement {
         await this.clickOnSignInButton();
         await this.waitUntilLogin();
         let url = await webActions.getCurrentUrl();
-        await webActions.verifyGivenTwoTexts(testConfig.myAccountUrl, url)
+        await this.verifyFirmName();
+        await this.verifyMyaccountUrl(url);
+
+    }
+
+    private async verifyMyaccountUrl(url: string) {
+        await webActions.verifyGivenTwoTexts(testConfig.myAccountUrl, url);
+    }
+
+    private async verifyFirmName() {
+        await webActions.verifyElementText('.account-info__text>p', ' MyAccount Test - 107382 ');
+    }
+
+    async visualTest(fileName:string) {
+
+        await webActions.visualValidation(fileName);
+        
     }
 }
