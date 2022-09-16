@@ -36,5 +36,9 @@ export class WebActions {
         expect(excepted).toBe(acutal);
     }
 
+    async visualValidation(fileName:string): Promise<void> {
+        await expect(this.page).toHaveScreenshot(fileName);
+    }
+
 }
 
